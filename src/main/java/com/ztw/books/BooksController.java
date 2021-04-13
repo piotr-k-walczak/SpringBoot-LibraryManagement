@@ -68,6 +68,11 @@ public class BooksController {
         return new ResponseEntity<>(booksService.getAuthor(id), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/get/author/{id}/books")
+    public ResponseEntity<Object> getAuthorBooks(@PathVariable("id") int id){
+        return new ResponseEntity<>(booksService.getAuthorBooks(id), HttpStatus.OK);
+    }
+
     @PostMapping(value = "/post/author")
     public ResponseEntity<Object> postAuthor(@RequestBody Author author){
         booksService.addAuthor(author);
@@ -92,8 +97,13 @@ public class BooksController {
     }
 
     @GetMapping(value = "/get/user/{id}")
-    public ResponseEntity<Object> getUsers(@PathVariable("id") int id){
+    public ResponseEntity<Object> getUser(@PathVariable("id") int id){
         return new ResponseEntity<>(booksService.getUser(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get/user/{id}/books")
+    public ResponseEntity<Object> getUserBooks(@PathVariable("id") int id){
+        return new ResponseEntity<>(booksService.getUserBooks(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/post/user")

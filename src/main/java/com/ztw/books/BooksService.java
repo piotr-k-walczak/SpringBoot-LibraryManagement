@@ -56,6 +56,11 @@ public class BooksService implements IBooksService {
     }
 
     @Override
+    public Iterable<Book> getAuthorBooks(long id) {
+        return bookRepository.findByAuthorId(id);
+    }
+
+    @Override
     public void addAuthor(Author author) {
         if(!authorRepository.existsById(author.getId())){
             authorRepository.save(author);
@@ -81,6 +86,11 @@ public class BooksService implements IBooksService {
     @Override
     public User getUser(long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Iterable<Book> getUserBooks(long id) {
+        return bookRepository.findByUserId(id);
     }
 
     @Override
@@ -116,4 +126,6 @@ public class BooksService implements IBooksService {
         book.setUser(null);
         bookRepository.save(book);
     }
+
+
 }
